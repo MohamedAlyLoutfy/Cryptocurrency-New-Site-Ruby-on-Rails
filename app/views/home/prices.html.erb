@@ -1,0 +1,38 @@
+<br/>
+<% if @symbol%>
+<% if @quote["Response"] %>
+  <h4>The CryptoSymbol <%=@symbol%> Doesnot Exist, Please Try Again..</h4>
+
+<%else%>
+
+
+
+<table class="table table-sm table-striped table-bordered table-hover">
+  <thead class="thead-light">
+  <tr>
+  <th scope="col">Name</th>
+  <th scope="col">Price</th>
+  <th scope="col">24hr High</th>
+  <th scope="col">24hr Low</th>
+  <th scope="col">Market Cap</th>
+</tr>
+</thead>
+<tbody>
+    <% @quote["DISPLAY"].each do |key, value| %>
+     
+    
+
+    <tr>
+      <td scope="col"><%= key  %></td>
+      <td scope="col"><%= value["USD"]["PRICE"] %></td>
+      <td scope="col"><%= value["USD"]["HIGHDAY"] %></td>
+      <td scope="col"><%= value["USD"]["LOWDAY"] %></td>
+      <td scope="col"><%= value["USD"]["MKTCAP"] %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
+<%else%>
+<h4>Please Enter CryptoSymbol</h4>
+<%end%>
